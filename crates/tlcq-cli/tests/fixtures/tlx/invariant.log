@@ -1,0 +1,38 @@
+tlx version 0.1.0
+Running breadth-first search Model-Checking with fp 0 and seed 0 with 8 workers on 12 cores with 16384MB fingerprint memory [pid: 41630] (macos aarch64, tlx 0.1.0).
+Optimizations: none applicable.
+Starting... (2026-10-19 13:17:30)
+Computing initial states...
+compile: pre-run: 0.02s, 331 states
+compile: lowering and code generation: 0.04s
+compile: layout: 173 words; 31/31 actions lowered, 3 fully typed; IR nodes 17313 (2615 boxed, 108 interpreter)
+compile: IR invariants: 3 lowered; IR nodes 260 (15 boxed, 0 interpreter)
+compile: IR action properties: 0 lowered; IR nodes 0 (0 boxed, 0 interpreter)
+compile: native code: 31/31 actions, 3/3 invariants, Init; mixed: 30 functions, 589 regions
+compile: symmetry: permuting encodings
+Finished computing initial states: 3 states generated, with 1 of them distinct at 2026-10-19 13:17:31.
+compile: native code (JIT) ready after 0.021s (compile 0.019s)
+compile: 809 action evaluations fell back to the interpreter
+Error: Invariant SafetyB is violated.
+Error: The behavior up to this point is:
+State 1: <Initial predicate>
+/\ x = 1
+
+State 2: <Next line 931, col 9 to line 931, col 43 of module November>
+/\ x = 2
+
+State 3: <Next line 931, col 9 to line 931, col 43 of module November>
+/\ x = 3
+
+State 4: <Step9(p1) line 367, col 5 to line 371, col 160 of module November>
+/\ x = 4
+
+State 5: <Step10(p1) line 412, col 5 to line 419, col 166 of module November>
+/\ x = 5
+
+State 6: <Next line 932, col 9 to line 932, col 48 of module November>
+/\ x = 6
+
+1500 states generated, 625 distinct states found, 385 states left on queue.
+The depth of the complete state graph search is 6.
+Finished in 00s at (2026-10-19 13:17:31)

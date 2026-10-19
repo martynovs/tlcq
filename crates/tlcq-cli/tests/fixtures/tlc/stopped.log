@@ -1,0 +1,20 @@
+TLC2 Version 2026.09.25.163503 (rev: 8f4bc8b)
+Running breadth-first search Model-Checking with fp 120 and seed -9219209661558894597 with 5 workers on 12 cores with 7282MB heap and 64MB offheap memory [pid: 52393] (Mac OS X 26.5.2 aarch64, Homebrew 27 64bit, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/user/specs/foxtrot/Foxtrot.tla
+Parsing file /tmp/tlc-11653935393286691885/Integers.tla (jar:file:/home/user/tla/tla2tools.jar!/tla2sany/StandardModules/Integers.tla)
+Parsing file /tmp/tlc-11653935393286691885/Sequences.tla (jar:file:/home/user/tla/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Parsing file /tmp/tlc-11653935393286691885/FiniteSets.tla (jar:file:/home/user/tla/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file /tmp/tlc-11653935393286691885/TLC.tla (jar:file:/home/user/tla/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /tmp/tlc-11653935393286691885/Naturals.tla (jar:file:/home/user/tla/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module Foxtrot
+Linting of module Foxtrot
+Starting... (2026-10-15 09:47:21)
+Computing initial states...
+Computed 2 initial states...
+Finished computing initial states: 3 states generated, with 1 of them distinct at 2026-10-15 09:47:21.
+Progress(12) at 2026-10-15 09:47:24: 351,141 states generated (351,141 s/min), 102,597 distinct states found (102,597 ds/min), 54,288 states left on queue.

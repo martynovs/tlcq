@@ -1,0 +1,23 @@
+# Rust build output
+/target
+/.cargo/target
+
+# Throwaway: logs, coverage artifacts, scratch
+/tmp
+# Raw coverage profiles an instrumented binary writes where LLVM_PROFILE_FILE is unset
+*.profraw
+
+# Editor / OS cruft
+*.rs.bk
+.DS_Store
+/.vscode
+
+# Claude Code workspace (commands, skills, local settings) — kept local, not committed
+/.claude
+
+# The TLC jars copied into the image's build context (`just docker-jars`)
+/docker/jars
+
+# The page's packages and build (ui/)
+/ui/node_modules
+/ui/dist

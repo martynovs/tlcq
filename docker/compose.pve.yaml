@@ -1,0 +1,28 @@
+# The runner on pve (design D13): rootless podman behind traefik, on top of
+# compose.yaml. `just docker-pve` builds the image on pve and starts it.
+#
+# It comes back after a reboot through the podman user's podman-restart.service
+# (podman has no daemon to do it): that service starts every container whose
+# restart policy is `always`, never `unless-stopped`. pve's homelab/deploy.sh
+# enables it. The page is at https://tlcq.pve.local/ (traefik's LAN cert, and
+# traefik-mdns announces the name).
+services:
+  runner:
+    restart: always
+    environment:
+      # Memory kept back from what is free when an attempt starts (its cap is
+      # sized from MemAvailable, so VM 700's 32 GiB counts only while that VM
+      # runs): headroom for the host, the infra containers and an image build.
+      TLCQ_RESERVE_MB: "8192"
+    # The page goes through traefik, not a published port.
+    ports: !reset []
+    networks: [exposed]
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.tlcq.rule: Host(`tlcq.pve.local`)
+      traefik.http.services.tlcq.loadbalancer.server.port: "8080"
+
+networks:
+  # The network traefik reaches labeled compose containers on.
+  exposed:
+    external: true

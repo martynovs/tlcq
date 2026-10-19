@@ -1,0 +1,117 @@
+[workspace]
+resolver = "2"
+members = ["crates/*"]
+
+[workspace.package]
+edition = "2021"
+# 1.89: `std::fs::File::lock`, the flock behind the history and placement locks.
+rust-version = "1.89"
+version = "0.1.0"
+license = "MIT"
+repository = "https://github.com/martynovs/tlcq"
+
+[workspace.dependencies]
+# Lean clap: `default-features = false` drops the color/suggestions stack
+# (anstream/anstyle/strsim); we only want derive + help/usage/error text, and
+# `env` for the runner's `TLCQ_*` settings in its containers.
+clap = { version = "4", default-features = false, features = ["std", "derive", "help", "usage", "error-context", "env"] }
+# thiserror for typed, matchable library errors; anyhow for application-level
+# context in the binary's `main`.
+thiserror = "2"
+anyhow = "1"
+# The submission config (`tlcq.toml`, `--config`), and the JSON files below.
+serde = { version = "1", features = ["derive"] }
+toml = "1"
+# Content hashes: the job id, the jar version.
+sha2 = "0.11"
+# The job tarball, written deterministically so its bytes depend only on its files.
+tar = "0.4"
+# The history, an append-only JSONL file (D5), and `result.json`.
+serde_json = "1"
+# The runner's free-disk floor (D9): `statvfs` without unsafe code.
+rustix = { version = "1", features = ["fs", "process"] }
+# The runner's SIGTERM (D10): admission stops while it shuts down, without
+# unsafe code of our own.
+signal-hook = "0.3"
+tempfile = "3"
+
+[profile.release]
+strip = true
+lto = "thin"
+
+[workspace.lints.rust]
+# Default-deny unsafe. A narrow `#[expect(unsafe_code, reason = "...")]` at a
+# specific block is still permitted where genuinely needed (e.g. an extern "C"
+# syscall) — `forbid` would block even targeted opt-outs, so we use `deny`.
+unsafe_code = "deny"
+
+# A public item with no doc is the one documentation fault nothing else catches.
+# `just doc` runs rustdoc under `-D warnings`, but rustdoc only judges the docs that
+# exist — a broken link, an uncompilable fence — and says nothing about one that is
+# absent. The gap bites hardest when a doc block is *moved*: a function that drifts
+# away from its own prose leaves the block merged onto its neighbour, which still
+# compiles and still reads as one correct doc.
+#
+# It catches only the subset where the bare item is public. A `pub(crate)` or private
+# item can lose its doc the same way and stay invisible, so treat this as necessary
+# and not sufficient.
+#
+# Where a module documents fields and variants on the *type* rather than one by one,
+# relax it there — `#![allow(missing_docs, reason = "...")]` scoped to that module —
+# rather than paying it off with `/// The name.` restatements.
+missing_docs = "deny"
+
+[workspace.lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+module_name_repetitions = "allow"
+missing_errors_doc = "allow"
+# Builders chain `-> Self`; requiring #[must_use] on every setter is noise.
+return_self_not_must_use = "allow"
+must_use_candidate = "allow"
+
+# Stricter opt-in lints (https://emschwartz.me/your-clippy-config-should-be-stricter/)
+# Don't panic
+string_slice = "warn"
+indexing_slicing = "warn"
+unwrap_used = "warn"
+panic = "warn"
+todo = "warn"
+unimplemented = "warn"
+unreachable = "warn"
+get_unwrap = "warn"
+unwrap_in_result = "warn"
+unchecked_time_subtraction = "warn"
+panic_in_result_fn = "warn"
+# Don't fail silently
+let_underscore_future = "warn"
+let_underscore_must_use = "warn"
+unused_result_ok = "warn"
+map_err_ignore = "warn"
+assertions_on_result_states = "warn"
+# Async safety
+await_holding_lock = "warn"
+await_holding_refcell_ref = "warn"
+if_let_mutex = "warn"
+large_futures = "warn"
+# Memory safety
+mem_forget = "warn"
+undocumented_unsafe_blocks = "warn"
+multiple_unsafe_ops_per_block = "warn"
+unnecessary_safety_doc = "warn"
+unnecessary_safety_comment = "warn"
+# Numeric correctness
+float_cmp = "warn"
+float_cmp_const = "warn"
+lossy_float_literal = "warn"
+cast_sign_loss = "warn"
+invalid_upcast_comparisons = "warn"
+# General best practices
+rc_mutex = "warn"
+debug_assert_with_mut_call = "warn"
+iter_not_returning_iterator = "warn"
+expl_impl_clone_on_copy = "warn"
+infallible_try_from = "warn"
+dbg_macro = "warn"
+# Suppression discipline
+allow_attributes = "warn"
+allow_attributes_without_reason = "warn"

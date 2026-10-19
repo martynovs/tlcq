@@ -1,0 +1,10 @@
+allow-indexing-slicing-in-tests = true
+allow-panic-in-tests = true
+allow-unwrap-in-tests = true
+allow-expect-in-tests = true
+allow-dbg-in-tests = true
+
+# Proper nouns that `clippy::doc_markdown` shouldn't demand backticks around.
+# `..` keeps clippy's built-in defaults (OpenGL, etc.); add your own project
+# nouns after it, e.g. `doc-valid-idents = ["..", "OpenAPI", "PostgreSQL"]`.
+doc-valid-idents = [".."]

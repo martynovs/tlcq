@@ -1,0 +1,44 @@
+tlx version 0.1.0
+Running breadth-first search Model-Checking with fp 0 and seed 0 with 8 workers on 12 cores with 16384MB fingerprint memory [pid: 47194] (macos aarch64, tlx 0.1.0).
+Optimizations: none applicable.
+Starting... (2026-10-19 13:18:00)
+Implied-temporal checking--satisfiability problem has 2 branches.
+Computing initial states...
+compile: pre-run: 0.07s, 1427 states (layout settled)
+compile: lowering and code generation: 0.04s
+compile: layout: 161 words; 31/31 actions lowered, 0 fully typed; IR nodes 16925 (2625 boxed, 124 interpreter)
+compile: IR invariants: 7 lowered; IR nodes 9456 (76 boxed, 5 interpreter)
+compile: IR action properties: 2 lowered; IR nodes 619 (3 boxed, 1 interpreter)
+compile: native code: 31/31 actions, 7/7 invariants, Init, 2/2 action properties; mixed: 35 functions, 621 regions
+Finished computing initial states: 1 distinct state generated at 2026-10-19 13:18:00.
+Progress(13) at 2026-10-19 13:18:04: 847,269 states generated (847,269 s/min), 195,321 distinct states found (195,321 ds/min), 81,509 states left on queue.
+compile: 1939784 action evaluations fell back to the interpreter
+Progress(27) at 2026-10-19 13:18:43: 9,993,398 states generated, 1,420,685 distinct states found, 0 states left on queue.
+Checking 2 branches of temporal properties for the complete state space with 2841370 total distinct states at (2026-10-19 13:18:43)
+Error: Temporal property LivenessC was violated.
+
+Error: The following behavior constitutes a counter-example:
+
+State 1: <Initial predicate>
+/\ x = 1
+
+State 2: <Next line 931, col 9 to line 931, col 43 of module November>
+/\ x = 2
+
+State 3: <Next line 932, col 9 to line 932, col 48 of module November>
+/\ x = 3
+
+State 4: <Next line 935, col 9 to line 938, col 25 of module November>
+/\ x = 4
+
+State 5: <Next line 932, col 9 to line 932, col 48 of module November>
+/\ x = 5
+
+State 6: <Next line 935, col 9 to line 938, col 25 of module November>
+/\ x = 6
+
+State 7: Stuttering
+Finished checking temporal properties in 00s at 2026-10-19 13:18:43
+9993398 states generated, 1420685 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 27.
+Finished in 42s at (2026-10-19 13:18:43)

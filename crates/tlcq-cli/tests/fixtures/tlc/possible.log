@@ -1,0 +1,24 @@
+TLC2 Version 2026.09.25.163503 (rev: 8f4bc8b)
+Running breadth-first search Model-Checking with fp 13 and seed 486820261685580892 with 12 workers on 12 cores with 2731MB heap and 64MB offheap memory [pid: 57389] (Mac OS X 26.5.2 aarch64, Homebrew 27 64bit, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/user/specs/india/India.tla
+Parsing file /tmp/tlc-6955459758294824715/Naturals.tla (jar:file:/home/user/tla/tla2tools.jar!/tla2sany/StandardModules/Naturals.tla)
+Parsing file /tmp/tlc-6955459758294824715/FiniteSets.tla (jar:file:/home/user/tla/tla2tools.jar!/tla2sany/StandardModules/FiniteSets.tla)
+Parsing file /tmp/tlc-6955459758294824715/TLC.tla (jar:file:/home/user/tla/tla2tools.jar!/tla2sany/StandardModules/TLC.tla)
+Parsing file /tmp/tlc-6955459758294824715/Sequences.tla (jar:file:/home/user/tla/tla2tools.jar!/tla2sany/StandardModules/Sequences.tla)
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module India
+Linting of module India
+Starting... (2026-09-28 19:44:50)
+Computing initial states...
+Finished computing initial states: 1 distinct state generated at 2026-09-28 19:44:50.
+[PossibleA |-> 0]
+Error: The _POSSIBLE predicate PossibleA at line 211, col 19 to line 211, col 69 of module India was never witnessed.
+Others may be unwitnessed too; only witnessed predicates appear with a
+non-zero count in the record printed above.
+See https://explain.tlapl.us/possible-conditions for additional details.
+13986 states generated, 5217 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 21.
+Finished in 00s at (2026-09-28 19:44:51)

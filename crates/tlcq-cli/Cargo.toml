@@ -1,0 +1,31 @@
+[package]
+name = "tlcq-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "A shared queue for TLA+ model checking, built for AI coding agents"
+
+# The binary is `tlcq`: the agents' commands, the runner and its verbs.
+[[bin]]
+name = "tlcq"
+path = "src/main.rs"
+
+[dependencies]
+clap = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+serde = { workspace = true }
+toml = { workspace = true }
+sha2 = { workspace = true }
+tar = { workspace = true }
+serde_json = { workspace = true }
+rustix = { workspace = true }
+signal-hook = { workspace = true }
+
+[lints]
+workspace = true
+
+[dev-dependencies]
+tempfile = { workspace = true }

@@ -1,0 +1,7 @@
+# TLC 2026.09.25 exit statuses, measured on the pinned jar, by fixture.
+pass 0
+deadlock 11
+invariant 12
+temporal 13
+possible 10
+parse-error 150

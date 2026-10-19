@@ -1,0 +1,29 @@
+TLC2 Version 2026.09.25.163503 (rev: 8f4bc8b)
+Warning: Please run the Java VM, which executes TLC with a throughput optimized garbage collector, by passing the "-XX:+UseParallelGC" property.
+(Use the -nowarning option to disable this warning.)
+Running breadth-first search Model-Checking with fp 76 and seed 6801269300981988101 with 1 worker on 12 cores with 256MB heap and 64MB offheap memory [pid: 55022] (Mac OS X 26.5.2 aarch64, Homebrew 27 64bit, MSBDiskFPSet, DiskStateQueue).
+Parsing file /home/user/exitcodes/Broken.tla
+***Parse Error***
+Was expecting "==== or more Module body"
+Encountered "0" at line 4, column 15 and token "=" 
+
+Residual stack trace follows:
+Module definition starting at line 1, column 1.
+
+
+Fatal errors while parsing TLA+ spec in file Broken
+
+In module Broken
+
+Could not parse module Broken from file Broken.tla
+*** Errors: 1
+
+In module Broken
+
+Could not parse module Broken from file Broken.tla
+
+
+
+Starting... (2026-10-18 17:47:38)
+Error: Parsing or semantic analysis failed.
+Finished in 00s at (2026-10-18 17:47:38)

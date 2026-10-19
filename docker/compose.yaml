@@ -1,0 +1,49 @@
+# The runner (design D9): one long-lived container holding the queue on the
+# state volume, starting each attempt as a sibling container through the socket.
+#
+# Locally (Docker Desktop):   just docker-up
+# On pve (rootless podman):   just docker-pve   (with compose.pve.yaml on top)
+#
+# The laptop then runs each verb as `docker [--context pve] exec -i tlcq-runner tlcq vm <verb>`.
+name: tlcq
+
+services:
+  runner:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: tlcq:latest
+    container_name: tlcq-runner
+    command: ["tlcq", "runner"]
+    # Forwards signals and reaps the CLI processes the runner starts.
+    init: true
+    restart: unless-stopped
+    environment:
+      # Attempts run this image with this volume mounted at /state.
+      TLCQ_IMAGE: tlcq:latest
+      TLCQ_VOLUME: tlcq-state
+      # ${NAME:-default}: your shell's value if set, else the default (D9, D13).
+      # The slots' CPUs (pinned-slots S1): pve's 16 efficiency cores for E,
+      # its 8 performance cores (two threads each) for P.
+      TLCQ_E_CPUS: ${TLCQ_E_CPUS:-16-31}
+      TLCQ_P_CPUS: ${TLCQ_P_CPUS:-0-15}
+      # The VM's memory defaults to what the runner sees; this much is kept
+      # back for the rest of the machine before the slots are sized.
+      TLCQ_RESERVE_MB: ${TLCQ_RESERVE_MB:-4096}
+      # No job starts with less free space on the state volume (TLC's scratch).
+      TLCQ_DISK_FLOOR_GB: ${TLCQ_DISK_FLOOR_GB:-20}
+      # The web page (D16): the queue, progress and ETAs, cancel, reorder,
+      # freeze, pause, the P toggle and the hold.
+      TLCQ_UI: 0.0.0.0:8080
+    volumes:
+      - tlcq-state:/state
+      - ${DOCKER_SOCKET:-/var/run/docker.sock}:/var/run/docker.sock
+    # The page, on this machine only: http://localhost:8080 (another port with
+    # TLCQ_UI_PORT). On pve it sits behind traefik instead (compose.pve.yaml).
+    ports:
+      - 127.0.0.1:${TLCQ_UI_PORT:-8080}:8080
+
+volumes:
+  # Named, not project-prefixed: the runner passes this name to every attempt.
+  tlcq-state:
+    name: tlcq-state

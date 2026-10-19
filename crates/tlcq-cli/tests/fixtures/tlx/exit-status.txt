@@ -1,0 +1,5 @@
+# tlx bec5985 exit statuses, measured on a real project's configurations (2026-10-19), by fixture.
+pass 0
+live-pass 0
+invariant 12
+temporal 13

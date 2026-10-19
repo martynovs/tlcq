@@ -1,0 +1,435 @@
+tlx version 0.1.0
+Running breadth-first search Model-Checking with fp 0 and seed 0 with 8 workers on 12 cores with 16384MB fingerprint memory [pid: 44432] (macos aarch64, tlx 0.1.0).
+Optimizations: none applicable.
+Starting... (2026-10-19 13:17:45)
+Computing initial states...
+compile: pre-run: 0.01s, 2013 states (layout settled)
+compile: lowering and code generation: 0.01s
+compile: layout: 125 words; 25/25 actions lowered, 25 fully typed; IR nodes 3599 (0 boxed, 0 interpreter)
+compile: IR invariants: 2 lowered; IR nodes 335 (0 boxed, 0 interpreter)
+compile: IR action properties: 0 lowered; IR nodes 0 (0 boxed, 0 interpreter)
+compile: native code: 25/25 actions, 2/2 invariants, Init
+Finished computing initial states: 1 distinct state generated at 2026-10-19 13:17:45.
+compile: native code (JIT) ready after 0.007s (compile 0.006s)
+Model checking completed. No error has been found.
+  Estimates of the probability that TLC did not check all reachable states
+  because two distinct states had the same fingerprint:
+  calculated (optimistic):  val = 3.5E-11
+51804 states generated, 21595 distinct states found, 0 states left on queue.
+The depth of the complete state graph search is 10.
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 12 and the 95th percentile is 4).
+Finished in 00s at (2026-10-19 13:17:45)
+==== tlx statistics (-stats) ====
+phases:
+  front end (parse, sema, cfg)         0.057s
+  auto symmetry analysis               0.000s
+  pre-run                              0.038s
+  pre-run states                       685
+  IR lowering                          0.044s
+  IR verification                      0.009s
+  C generation                         0.052s
+  host regions                         267
+  C source bytes                       1,562,282
+  C build -O2                          0.002s
+  C build -O2 cache                    hit
+  native -O2 load                      0.331s
+  native -O2 ready at (since start)    0.550s
+  state words                          36
+  model build (lowering, C generation) 0.446s
+  model builds                         1
+  initial states                       0.003s
+  search                               1.646s
+  search runs                          1
+  fpset slots                          1,048,576
+  fpset entries                        69,396
+  fpset load                           6.62%
+  fpset limit (slots)                  2,147,483,648
+  action runs fell back to the interpreter 9,408
+  total                                2.225s
+memory (peaks of the components; est. = estimated from sizes; % of the budget):
+  archive memory limit (-maxmem / 4)   4096.0 MiB (25.0%)
+  fingerprint set table                8.0 MiB (0.0%)
+  fingerprint set touched (est.)       8.0 MiB (0.0%)
+  accounted at search end              11.8 MiB (0.1%)
+  accounted peak (sampled)             22.1 MiB (0.1%)
+  trace log                            1.8 MiB (0.0%)
+  budget (-maxmem)                     16384.0 MiB
+  budget pressure stage                0 (within the budget)
+  trace log entries                    69,396
+  frontier peak tasks (est.)           11,846
+  frontier peak (blocks)               2.4 MiB (0.0%)
+  archive peak (for resuming)          2.0 MiB (0.0%)
+  archived states (for resuming)       69,396
+  memo tables (all threads; peak)      12.0 MiB (0.1%)
+  evaluation caches: allowance per thread (-maxmem / 8 / workers) 256.0 MiB (1.6%)
+  peak RSS                             133.4 MiB (0.8%)
+search work:
+  units (states expanded, simulation steps) 69,396 (timed: 8,679, 1 in 8); successors generated 173,400
+  levels 35, widest 6,052 at depth 22
+  fingerprint set: 173,400 inserts, 69,395 new (40.0%), 0.034 extra probes per insert
+  encoded states: 22,107 encodes, 65,381 decodes, 173,401 fingerprints of encodings
+  state-level definitions evaluated by the interpreter: 361,232 in a current state, 105,500 in a next state
+workers (8 thread runs, 13.080 thread-seconds): busy 99.5%, waiting for work 0.0%, at level barriers 0.5%
+  units per worker run: 8,795 8,281 8,419 9,242 7,933 8,847 8,957 8,922
+time in search units (extrapolated from the timed units; thread-seconds): 13.178s
+  invariants (mixed)                       6.150s  46.7%
+  action properties (mixed)                3.310s  25.1%
+  actions (mixed)                          1.675s  12.7%
+  action properties (interp)               1.242s   9.4%
+  decoding states                          0.144s   1.1%
+  actions (native)                         0.113s   0.9%
+  actions (fallback)                       0.109s   0.8%
+  fingerprinting                           0.108s   0.8%
+  explorer, per state                      0.069s   0.5%
+  invariants (interp)                      0.059s   0.4%
+  actions (interp)                         0.039s   0.3%
+  invariants (native)                      0.032s   0.2%
+  invariants (dispatch)                    0.029s   0.2%
+  encoding values                          0.025s   0.2%
+  explorer, per successor                  0.024s   0.2%
+  fingerprint set                          0.019s   0.1%
+  action properties (dispatch)             0.015s   0.1%
+  action properties (native)               0.011s   0.1%
+  constraints                              0.004s   0.0%
+  invariants (ir)                          0.001s   0.0%
+actions                              native        mixed           ir       interp     fallback   successors  est. time  share
+  VerbTake                                0       67,679            0        1,600          117       21,273     1.420s  10.8%
+  VerbApply                               0       68,884            0          512            0       21,434     0.051s   0.4%
+  AdmitRecord                        69,396            0            0            0            0          182     0.004s   0.0%
+  AdmitThaw                          69,396            0            0            0            0          198     0.004s   0.0%
+  AdmitRefreeze                      69,396            0            0            0            0            0     0.004s   0.0%
+  AdmitRun                           69,396            0            0            0            0          272     0.004s   0.0%
+  AdmitEnd                           69,396            0            0            0            0       21,460     0.006s   0.0%
+  HookUndo                           69,293            0            0            0          103          103     0.006s   0.0%
+  HookCache                          69,396            0            0            0            0        3,596     0.004s   0.0%
+  HookEnd                            69,396            0            0            0            0        3,596     0.004s   0.0%
+  HookScratch                        69,396            0            0            0            0        3,596     0.004s   0.0%
+  SupStart #11                       69,396            0            0            0            0           54     0.003s   0.0%
+  SupPause #12                       69,396            0            0            0            0           50     0.005s   0.0%
+  SupTimeout #13                     69,396            0            0            0            0           78     0.003s   0.0%
+  LateMark #14                       69,396            0            0            0            0            0     0.003s   0.0%
+  CkKeep #15                         69,396            0            0            0            0          196     0.003s   0.0%
+  Exit #16                           67,938            0            0            0        1,458        2,582     0.014s   0.1%
+  UnitEnds #17                       67,726            0            0            0        1,670        4,504     0.013s   0.1%
+  HookTake #18                       69,396            0            0            0            0        1,266     0.005s   0.0%
+  HookKill #19                       69,396            0            0            0            0        8,624     0.004s   0.0%
+  SupStart #20                       69,396            0            0            0            0          306     0.003s   0.0%
+  SupPause #21                       69,396            0            0            0            0           70     0.003s   0.0%
+  SupTimeout #22                     69,396            0            0            0            0          167     0.003s   0.0%
+  LateMark #23                       69,396            0            0            0            0            0     0.006s   0.0%
+  CkKeep #24                         69,396            0            0            0            0          288     0.003s   0.0%
+  Exit #25                           66,747            0            0            0        2,649        4,626     0.025s   0.2%
+  UnitEnds #26                       66,061            0            0            0        3,335        8,473     0.030s   0.2%
+  HookTake #27                       69,396            0            0            0            0        2,433     0.003s   0.0%
+  HookKill #28                       69,396            0            0            0            0       16,074     0.005s   0.0%
+  Crash                              69,396            0            0            0            0       25,936     0.006s   0.0%
+  Boot                                    0       61,551            0        7,769           76        7,078     0.277s   2.1%
+  Quiet                              69,396            0            0            0            0       14,885     0.005s   0.0%
+invariants                           native        mixed           ir       interp     fallback  est. time  share
+  TypeOK                                  0       68,883          512            0            0     0.027s   0.2%
+  OneLiveAttempt                     69,395            0            0            0            0     0.003s   0.0%
+  SlotsExclusive                     69,395            0            0            0            0     0.003s   0.0%
+  ClosedSlot                         69,395            0            0            0            0     0.003s   0.0%
+  PausingNotFrozen                   69,395            0            0            0            0     0.003s   0.0%
+  PausedHasCheckpoint                69,395            0            0            0            0     0.002s   0.0%
+  PausedAsked                        69,395            0            0            0            0     0.002s   0.0%
+  CancelFinal                        69,395            0            0            0            0     0.003s   0.0%
+  NoStuckRun                         69,395            0            0            0            0     0.003s   0.0%
+  SettleTwiceNoop                         0       68,883            0          512            0     6.183s  46.9%
+  ErrorOnlyAfterCrash                69,395            0            0            0            0     0.003s   0.0%
+  NoNameClash                        69,395            0            0            0            0     0.003s   0.0%
+  UndoLimit                          69,395            0            0            0            0     0.003s   0.0%
+action properties                    native        mixed           ir       interp     fallback  est. time  share
+  PreflightTrue                           0      126,765            0       46,635            0     4.552s  34.5%
+  PausedStays                       173,400            0            0            0            0     0.011s   0.1%
+mixed-mode functions (host region evaluations; sampled time per call by path):
+  action      VerbTake                          246,713 regions (3.6 per mixed call), 117 failed; us/call mixed 20.27 native - ir - interp 13.40 fallback 142.55
+  action      VerbApply                          19,715 regions (0.3 per mixed call), 0 failed; us/call mixed 0.74 native - ir - interp - fallback -
+  action      Boot                               61,200 regions (1.0 per mixed call), 76 failed; us/call mixed 3.88 native - ir - interp 3.60 fallback 97.26
+  invariant   TypeOK                            137,766 regions (2.0 per mixed call), 0 failed; us/call mixed 0.38 native - ir 1.57 interp - fallback -
+  invariant   SettleTwiceNoop                   534,831 regions (7.8 per mixed call), 0 failed; us/call mixed 88.79 native - ir - interp 112.74 fallback -
+  action prop. PreflightTrue                     175,717 regions (1.4 per mixed call), 0 failed; us/call mixed 25.94 native - ir - interp 26.52 fallback -
+auto symmetry:
+not applied: the cfg declares a SYMMETRY
+mixed-mode regions by time (all workers; memo hits included):
+  region 260       4.783s        68884 evals         0 failed  StatePred in SettleTwiceNoop: Eq : bool / let t26 : val [reads unit]
+  region 266       3.173s        48952 evals         0 failed  TransPred in PreflightTrue: interp Quant @712:48 [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached, qe', und', rq', rec', end', unit', mk', out', ck', scr', slot', cached']
+  region 259       0.806s        68884 evals         0 failed  StatePred in SettleTwiceNoop: interp Record @186:8 [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 0         0.274s        18668 evals         0 failed  Action in VerbTake: Eq : bool / let t0 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 261       0.153s        54698 evals         0 failed  StatePred in SettleTwiceNoop: Eq : bool / Apply : val [reads rq]
+  region 262       0.105s        54698 evals         0 failed  StatePred in SettleTwiceNoop: Eq : bool / Apply : val [reads qe]
+  region 263       0.104s       109396 evals         0 failed  StatePred in SettleTwiceNoop: Eq : bool / Apply : val [reads end]
+  region 264       0.086s       109396 evals         0 failed  StatePred in SettleTwiceNoop: Eq : bool / Apply : val [reads rec]
+  region 258       0.076s        68884 evals         0 failed  StatePred in SettleTwiceNoop: interp FnConstruct @182:16 [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 11        0.069s         7732 evals         0 failed  Action in VerbTake: field "x" : val / let t298 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 2         0.068s         7849 evals         0 failed  Action in VerbTake: field "q" : val / let t50 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 265       0.063s       126765 evals         0 failed  TransPred in PreflightTrue: interp FnConstruct @709:34 [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 1         0.061s         7849 evals         0 failed  Action in VerbTake: field "e" : val / let t25 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 5         0.058s         7849 evals         0 failed  Action in VerbTake: field "m" : val / let t125 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 7         0.056s         7849 evals         0 failed  Action in VerbTake: field "s" : val / let t175 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 8         0.055s         7849 evals         0 failed  Action in VerbTake: field "u" : val / let t200 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 4         0.053s         7849 evals         0 failed  Action in VerbTake: field "r" : val / let t100 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 6         0.053s         7849 evals         0 failed  Action in VerbTake: field "o" : val / let t150 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 9         0.052s         7849 evals         0 failed  Action in VerbTake: field "n" : val / let t225 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 3         0.049s         7849 evals         0 failed  Action in VerbTake: field "c" : val / let t75 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 246       0.033s         6120 evals         0 failed  Action in Boot, memo of region 1: field "e" : val / let t0 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 231       0.028s         7475 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t6697 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 247       0.027s         6120 evals         0 failed  Action in Boot, memo of region 2: field "q" : val / let t25 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 222       0.027s         7475 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t6449 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 221       0.027s         7475 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t6424 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 249       0.026s         6120 evals         0 failed  Action in Boot, memo of region 4: field "r" : val / let t75 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 227       0.026s         7475 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t6574 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 250       0.026s         6120 evals         0 failed  Action in Boot, memo of region 5: field "m" : val / let t100 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 252       0.026s         6120 evals         0 failed  Action in Boot, memo of region 7: field "s" : val / let t150 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 224       0.026s         7475 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t6499 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 253       0.025s         6120 evals         0 failed  Action in Boot, memo of region 8: field "u" : val / let t175 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 251       0.025s         6120 evals         0 failed  Action in Boot, memo of region 6: field "o" : val / let t125 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 228       0.025s         7475 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t6599 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 248       0.025s         6120 evals         0 failed  Action in Boot, memo of region 3: field "c" : val / let t50 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 56        0.025s         4703 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t1598 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 254       0.025s         6120 evals         0 failed  Action in Boot, memo of region 9: field "n" : val / let t200 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 229       0.024s         7475 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t6624 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 225       0.024s         7475 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t6524 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 57        0.024s         4703 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t1623 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 226       0.023s         7475 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t6549 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 60        0.023s         4703 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t1698 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 63        0.022s         4703 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t1773 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 66        0.022s         4703 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t1871 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 223       0.022s         7475 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t6474 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 242       0.022s        10656 evals         0 failed  Action in VerbApply: valop \cup : val / const {{}} : val [reads cancels, qe, und, rq, rec, end, mk, out, ck, scr, slot, cached]
+  region 62        0.022s         4703 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t1748 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 61        0.021s         4703 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t1723 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 59        0.020s         4703 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t1673 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 58        0.020s         4703 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t1648 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 64        0.019s         4703 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t1798 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 244       0.009s         3865 evals         0 failed  Action in VerbApply: t343 : val
+  region 256       0.008s        68884 evals         0 failed  StatePred in TypeOK: valop \subseteq : val / var 26 : #10 [reads dec]
+  region 243       0.006s         3865 evals         0 failed  Action in VerbApply: interp FnConstruct @378:21 [reads rec, end, unit, mk, slot, fz]
+  region 257       0.004s        68884 evals         0 failed  StatePred in TypeOK: valop \subseteq : val / var 28 : #10 [reads late]
+  region 10        0.003s         7849 evals       117 failed  Action in VerbTake: mapset t282 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 245       0.003s         1249 evals         0 failed  Action in VerbApply: valop \in : val / Apply : val
+  region 255       0.002s         6120 evals        76 failed  Action in Boot, memo of region 10: mapset t257 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 230       0.002s         7475 evals         0 failed  Action in VerbTake, memo of region 10: mapset t6681 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 46        0.001s          231 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t1314 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 65        0.001s         4703 evals         0 failed  Action in VerbTake, memo of region 10: mapset t1855 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 45        0.001s          231 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t1289 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 34        0.001s          114 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t966 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 35        0.001s          114 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t991 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 187       0.001s           30 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t5416 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 25        0.001s           52 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t716 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 41        0.001s          114 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t1141 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 40        0.001s          114 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t1116 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 44        0.001s          114 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t1239 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 36        0.001s          114 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t1016 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 38        0.001s          114 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t1066 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 55        0.001s          231 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t1562 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 52        0.001s          231 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t1464 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 48        0.001s          231 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t1364 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 53        0.001s          231 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t1489 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 37        0.001s          114 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t1041 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 42        0.001s          114 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t1166 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 49        0.001s          231 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t1389 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 39        0.001s          114 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t1091 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 23        0.001s           52 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t666 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 47        0.001s          231 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t1339 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 51        0.001s          231 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t1439 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 50        0.001s          231 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t1414 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 24        0.001s           52 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t691 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 29        0.000s           52 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t816 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 26        0.000s           52 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t741 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 33        0.000s           52 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t939 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 30        0.000s           52 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t841 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 27        0.000s           52 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t766 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 31        0.000s           52 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t866 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 28        0.000s           52 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t791 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 12        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t365 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 16        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t465 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 22        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t638 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 13        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t390 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 18        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t515 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 17        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t490 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 19        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t540 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 15        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t440 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 20        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t565 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 14        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t415 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 54        0.000s          231 evals         0 failed  Action in VerbTake, memo of region 10: mapset t1546 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 43        0.000s          114 evals         0 failed  Action in VerbTake, memo of region 10: mapset t1223 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 78        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t2244 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 201       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t5844 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 32        0.000s           52 evals         0 failed  Action in VerbTake, memo of region 10: mapset t923 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 241       0.000s            8 evals         0 failed  Action in VerbApply: valop + : val / Convert : int [reads cancels]
+  region 200       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t5819 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 188       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t5475 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 210       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t6126 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 212       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t6176 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 191       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t5550 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 213       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t6201 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 220       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t6399 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 190       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t5525 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 211       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t6151 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 218       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t6326 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 189       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t5500 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 195       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t5650 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 192       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t5575 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 216       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t6276 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 217       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t6301 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 193       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t5600 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 194       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t5625 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 214       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t6226 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 198       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t5748 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 215       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t6251 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 196       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t5675 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 177       0.000s           30 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t5143 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 232       0.000s            8 evals         0 failed  Action in VerbApply: valop \in : val / const <<a, 1>> : val
+  region 197       0.000s           64 evals         0 failed  Action in VerbTake, memo of region 10: mapset t5732 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 199       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t5794 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 219       0.000s           72 evals         0 failed  Action in VerbTake, memo of region 10: mapset t6383 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 185       0.000s           30 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t5343 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 67        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t1928 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 178       0.000s           30 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t5168 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 89        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t2564 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 69        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t1978 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 68        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t1953 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 88        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t2517 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 179       0.000s           30 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t5193 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 181       0.000s           30 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t5243 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 209       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t6067 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 80        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t2294 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 202       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t5869 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 207       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t5994 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 79        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t2269 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 85        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t2419 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 183       0.000s           30 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t5293 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 21        0.000s            8 evals         0 failed  Action in VerbTake, memo of region 10: mapset t622 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 182       0.000s           30 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t5268 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 206       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t5969 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 92        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t2639 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 203       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t5894 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 74        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t2103 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 90        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t2589 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 180       0.000s           30 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t5218 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 71        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t2028 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 84        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t2394 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 91        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t2614 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 86        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t2444 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 184       0.000s           30 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t5318 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 205       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t5944 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 77        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t2201 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 73        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t2078 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 204       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t5919 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 96        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t2739 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 186       0.000s           30 evals         0 failed  Action in VerbTake, memo of region 10: mapset t5400 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 82        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t2344 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 72        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t2053 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 81        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t2319 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 99        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t2837 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 83        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t2369 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 70        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t2003 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 75        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t2128 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 97        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t2764 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 93        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t2664 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 95        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t2714 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 107       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 8: field "u" : val / let t3055 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 94        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t2689 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 76        0.000s           26 evals         0 failed  Action in VerbTake, memo of region 10: mapset t2185 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 87        0.000s           34 evals         0 failed  Action in VerbTake, memo of region 10: mapset t2501 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 208       0.000s           32 evals         0 failed  Action in VerbTake, memo of region 10: mapset t6051 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 101       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 2: field "q" : val / let t2905 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 108       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 9: field "n" : val / let t3080 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 102       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 3: field "c" : val / let t2930 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 106       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 7: field "s" : val / let t3030 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 103       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 4: field "r" : val / let t2955 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 105       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 6: field "o" : val / let t3005 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 110       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 11: field "x" : val / let t3153 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 100       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 1: field "e" : val / let t2880 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 104       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 5: field "m" : val / let t2980 : val [reads qe, und, rq, rec, end, unit, mk, out, ck, scr, slot, cached]
+  region 98        0.000s           28 evals         0 failed  Action in VerbTake, memo of region 10: mapset t2821 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 109       0.000s           24 evals         0 failed  Action in VerbTake, memo of region 10: mapset t3137 : #3 / constelems #12 x2 : val [reads rec, end, unit, mk]
+  region 233       0.000s            8 evals         0 failed  Action in VerbApply, memo of region 232: valop \in : val / const <<a, 1>> : val
+  region 234       0.000s            8 evals         0 failed  Action in VerbApply, memo of region 232: valop \in : val / const <<a, 1>> : val
+  region 236       0.000s            8 evals         0 failed  Action in VerbApply, memo of region 232: valop \in : val / const <<a, 1>> : val
+  region 237       0.000s            8 evals         0 failed  Action in VerbApply, memo of region 232: valop \in : val / const <<a, 1>> : val
+  region 239       0.000s            8 evals         0 failed  Action in VerbApply, memo of region 232: valop \in : val / const <<a, 1>> : val
+  region 238       0.000s            8 evals         0 failed  Action in VerbApply, memo of region 232: valop \in : val / const <<a, 1>> : val
+  region 235       0.000s            8 evals         0 failed  Action in VerbApply, memo of region 232: valop \in : val / const <<a, 1>> : val
+  region 240       0.000s            8 evals         0 failed  Action in VerbApply, memo of region 232: valop \in : val / const <<a, 1>> : val
+mixed-mode region evaluations by state variable read:
+  all regions                     1175953 evals   10.984s
+  reading end                      745315 evals    5.833s  (183 regions)
+  reading rec                      745315 evals    5.815s  (183 regions)
+  reading unit                     694147 evals   10.491s  (182 regions)
+  reading qe                       659890 evals    5.822s  (166 regions)
+  reading rq                       659890 evals    5.870s  (166 regions)
+  reading mk                       635919 evals    5.729s  (182 regions)
+  reading slot                     609057 evals    5.722s  (166 regions)
+  reading cached                   605192 evals    5.716s  (165 regions)
+  reading ck                       605192 evals    5.716s  (165 regions)
+  reading out                      605192 evals    5.716s  (165 regions)
+  reading scr                      605192 evals    5.716s  (165 regions)
+  reading und                      605192 evals    5.716s  (165 regions)
+  reading dec                       68884 evals    0.008s  (1 regions)
+  reading late                      68884 evals    0.004s  (1 regions)
+  reading cancels                   10664 evals    0.022s  (2 regions)
+  reading (no state variable)         5186 evals    0.012s  (11 regions)
+  reading fz                         3865 evals    0.006s  (1 regions)
+layout slots (final layout: shape, words; how it was chosen):
+  up                       Bool (1 word)
+      observed
+  crashes                  Int 0..5 (1 word)
+      observed
+  cancels                  Int 0..5 (1 word)
+      observed
+  ui                       Int 0..5 (1 word)
+      observed
+  lk                       Atom(31) (1 word)
+      observed
+  hk                       Set bitset(36) of Tuple(3) (1 word)
+      observed
+  ph                       Atom(31) (1 word)
+      observed
+  ac                       Set bitset(36) of Tuple(3) (1 word)
+      observed
+  runs                     Fcn(1 keys) to Int 0..5 (1 word)
+      observed
+  qe                       Fcn(1 keys) to Atom(31) (1 word)
+      observed
+  und                      Fcn(1 keys) to Int 0..5 (1 word)
+      observed
+  rq                       Fcn(1 keys) to Int 0..5 (1 word)
+      observed
+  nxt                      Fcn(1 keys) to Int 0..5 (1 word)
+      observed
+  cxl                      Fcn(1 keys) to Int 0..5 (1 word)
+      observed
+  rec                      Fcn(2 keys) to Bool (2 words)
+      observed
+  end                      Fcn(2 keys) to Atom(31) (2 words)
+      observed
+  unit                     Fcn(2 keys) to Atom(31) (2 words)
+      observed
+  mk                       Fcn(2 keys) to Set bitset(31) of Atom(31) (2 words)
+      observed
+  out                      Fcn(2 keys) to Bool (2 words)
+      observed
+  ck                       Fcn(2 keys) to Bool (2 words)
+      observed
+  scr                      Fcn(2 keys) to Bool (2 words)
+      observed
+  slot                     Fcn(2 keys) to Atom(31) (2 words)
+      observed
+  fz                       Fcn(2 keys) to Atom(31) (2 words)
+      observed
+  pc                       Bool (1 word)
+      observed
+  pk                       Set bitset(36) of Tuple(3) (1 word)
+      observed
+  died                     Set bitset(36) of Tuple(3) (1 word)
+      observed
+  dec                      Set bitset(0) of Never (0 words)
+      observed
+  cached                   Set bitset(1) of Atom(1) (1 word)
+      observed
+  late                     Set bitset(0) of Never (0 words)
+      observed
+  definition Cur           Record(11 fields) (18 words)
+      observed

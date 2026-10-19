@@ -1,0 +1,22 @@
+schema: spec-driven
+
+# Project context — shown to AI when creating artifacts.
+context: |
+  Tech stack: Rust (2021 edition, stable toolchain), Cargo workspace under crates/*.
+  CLI built with clap (derive); errors via thiserror (typed, in the library) + anyhow
+  (application context, in the binary's main).
+  Testing: `cargo nextest run` (`just test`). Coverage via cargo-llvm-cov + cargo-crap
+  with a ≥90% per-function line-coverage floor; `main` is covered by the integration
+  tests in tests/cli.rs that spawn the built binary.
+  Lints: clippy pedantic + a strict opt-in set; `unsafe_code` is denied. See CLAUDE.md.
+  Task runner: just (see the justfile). Temp files and artifacts go in ./tmp.
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always include a "Non-goals" section
+#     tasks:
+#       - Break tasks into chunks of max 2 hours

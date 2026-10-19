@@ -1,0 +1,9 @@
+# Only Cargo.toml, Cargo.lock, tlx.rev, tlx.repo, crates/, ui/ and docker/jars/ go into the image.
+target
+tmp
+.git
+.claude
+openspec
+tla
+ui/node_modules
+ui/dist
